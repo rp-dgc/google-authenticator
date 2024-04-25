@@ -41,7 +41,7 @@ ActiveSupport.on_load(:action_controller) do
     ActionController::Base.send(:include, GoogleAuthenticatorRails::ActionController::Integration)
   end
   
-  if defined?(ActionController::API)
-    ActionController::API.send(:include, GoogleAuthenticatorRails::ActionController::Integration)
-  end
+  # if defined?(ActionController::API)
+  #   ActionController::API.send(:include, GoogleAuthenticatorRails::ActionController::Integration)
+  # end
 end
