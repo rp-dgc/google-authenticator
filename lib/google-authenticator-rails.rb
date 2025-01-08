@@ -27,12 +27,6 @@ module GoogleAuthenticatorRails
     defined?(Rails) && (Rails::VERSION::MAJOR > 4 || Rails::VERSION::MAJOR == 4 && Rails::VERSION::MINOR > 0)
   end
 
-  class Railtie < Rails::Railtie
-    rake_tasks do
-      load 'tasks/google_authenticator.rake'
-    end
-  end if encryption_supported? && !Rails.env.test? # Without this last condition tasks under test are run twice
-
   # Drift is set to 6 because ROTP drift is not inclusive. This allows a drift of 5 seconds.
   DRIFT = 6
 
@@ -85,3 +79,5 @@ module GoogleAuthenticatorRails
     @@cookie_options = options
   end
 end
+
+require "google-authenticator-rails/railtie"
